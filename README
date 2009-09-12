@@ -1,0 +1,7 @@
+
+IRC colour code to HTML convertor.
+
+Because I couldn't find the original one which the Perl version was ported from, I wound up making a new one in Ruby.
+
+Licence is GPLv3 for now until I come up with a better idea.
+
