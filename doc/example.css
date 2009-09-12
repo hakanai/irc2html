@@ -1,0 +1,45 @@
+
+/* Example CSS file for styling the output. */
+
+.log { color: #B2B2B2; background-color: #000000; }
+.v { color: #000000; background-color:#B2B2B2; }
+
+.b { font-weight: bold; }
+.u { text-decoration: underline; }
+.m { font-family: monospace; }
+.f { /* find a way to do blinking, if you want it */ }
+
+.fnk, .bnk.v { color: #000000; }
+.fnr, .bnr.v { color: #B21717; }
+.fng, .bng.v { color: #17B217; }
+.fny, .bny.v { color: #B26717; }
+.fnb, .bnb.v { color: #1717B2; }
+.fnm, .bnm.v { color: #B217B2; }
+.fnc, .bnc.v { color: #17B2B2; }
+.fnw, .bnw.v { color: #B2B2B2; }
+.fik, .bik.v { color: #686868; }
+.fir, .bir.v { color: #FF5454; }
+.fig, .big.v { color: #54FF54; }
+.fiy, .biy.v { color: #FFFF54; }
+.fib, .bib.v { color: #5454FF; }
+.fim, .bim.v { color: #FF54FF; }
+.fic, .bic.v { color: #54FFFF; }
+.fiw, .biw.v { color: #FFFFFF; }
+
+.bnk, .fnk.v { background-color: #000000; }
+.bnr, .fnr.v { background-color: #B21717; }
+.bng, .fng.v { background-color: #17B217; }
+.bny, .fny.v { background-color: #B26717; }
+.bnb, .fnb.v { background-color: #1717B2; }
+.bnm, .fnm.v { background-color: #B217B2; }
+.bnc, .fnc.v { background-color: #17B2B2; }
+.bnw, .fnw.v { background-color: #B2B2B2; }
+.bik, .fik.v { background-color: #686868; }
+.bir, .fir.v { background-color: #FF5454; }
+.big, .fig.v { background-color: #54FF54; }
+.biy, .fiy.v { background-color: #FFFF54; }
+.bib, .fib.v { background-color: #5454FF; }
+.bim, .fim.v { background-color: #FF54FF; }
+.bic, .fic.v { background-color: #54FFFF; }
+.biw, .fiw.v { background-color: #FFFFFF; }
+

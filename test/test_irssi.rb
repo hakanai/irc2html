@@ -9,19 +9,19 @@ class TestIrssiFormatting < Test::Unit::TestCase
   end
 
   def test_blink
-    # TODO: Implement blinking.  Or decide not to...
+    inout("plain \004ablink\004a plain", 'plain <span class="f">blink</span> plain')
   end
 
   def test_underline
-    inout("plain \004bunderline\004b plain", 'plain <span style="text-decoration: underline;">underline</span> plain')
+    inout("plain \004bunderline\004b plain", 'plain <span class="u">underline</span> plain')
   end
 
   def test_bold
-    inout("plain \004cbold\004c plain", 'plain <span style="font-weight: bold;">bold</span> plain')
+    inout("plain \004cbold\004c plain", 'plain <span class="b">bold</span> plain')
   end
 
   def test_inverse
-    inout("plain \004dinverse\004d plain", 'plain <span style="color: #FFFFFF; background-color: #000000;">inverse</span> plain')
+    inout("plain \004dinverse\004d plain", 'plain <span class="v">inverse</span> plain')
   end
 
   def test_indent
@@ -33,7 +33,7 @@ class TestIrssiFormatting < Test::Unit::TestCase
   end
 
   def test_reset
-    inout("plain \004cbold\004g plain", 'plain <span style="font-weight: bold;">bold</span> plain')
+    inout("plain \004cbold\004g plain", 'plain <span class="b">bold</span> plain')
   end
 
   def test_clrtoeol
@@ -41,11 +41,11 @@ class TestIrssiFormatting < Test::Unit::TestCase
   end
 
   def test_monospace
-    inout("plain \004imonospace\004g plain", 'plain <span style="font-family: monospaced;">monospace</span> plain')
+    inout("plain \004imonospace\004g plain", 'plain <span class="m">monospace</span> plain')
   end
 
   def test_color
-    inout("\00400small bombs", '<span style="color: #000000; background-color: #000000;">small bombs</span>')
+    inout("\00400small bombs", '<span class="fnk bnk">small bombs</span>')
   end
 
   def inout(input, expected_output)
