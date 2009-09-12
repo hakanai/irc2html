@@ -23,7 +23,7 @@ gem_spec = Gem::Specification.new do |s|
   s.summary = "Converts IRC formatting code to HTML."
   #s.description = <<EOF
   s.requirements << 'none'
-  s.files = FileList["{lib,test}/**/*"].exclude("rdoc").to_a
+  s.files = FileList["{doc,examples,lib,test}/**/*"].exclude("rdoc").to_a
   s.require_path = 'lib'
 end
 
