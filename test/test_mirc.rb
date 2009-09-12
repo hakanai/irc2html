@@ -33,7 +33,8 @@ class TestMircFormatting < Test::Unit::TestCase
   end
 
   def inout(input, expected_output)
-    assert_equal expected_output, IrcFormat::HtmlConvertor.new(:nk, :iw, :mirc).irc_to_html(input)
+    assert_equal expected_output,
+                 IrcFormat::HtmlConvertor.new(:code_parsers => :mirc, :break_style => :new_line).irc_to_html(input).chomp
   end
 end
 

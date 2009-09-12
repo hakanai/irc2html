@@ -5,9 +5,14 @@ require 'ircformat/irssi_code_parser'
 
 module IrcFormat
   class HtmlConvertor
-    def initialize(defaultfg, defaultbg, code_parsers = [:mirc])
-      @defaultfg = defaultfg
-      @defaultbg = defaultbg
+
+    # Constructor.  Supported options:
+    #   :code_parsers    - Array of values :mirc and/or :irssi, or arbitrary objects responding to the same methods.
+    #                      Default is [:mirc]
+    #   :break_style     - :new_line or :br_tag.  Default is :br_tag.
+    def initialize(options)
+      @break_style = options[:break_style] || :br_tag
+      code_parsers = options[:code_parsers] || [:mirc]
       @code_parsers = []
       code_parsers = [ code_parsers ] unless code_parsers.respond_to?(:each)
       code_parsers.each do |code_parser_or_sym|
@@ -41,14 +46,19 @@ module IrcFormat
     def irc_to_html(string)
       result = ''
       string.each_line do |line|
-        IrcFormat::Parser.new(@code_parsers).parse_formatted_string(line).each do |fragment|
+        IrcFormat::Parser.new(@code_parsers).parse_formatted_string(line.chomp).each do |fragment|
           text = self.escape_html(fragment[1])
           classes = self.to_css_classes(fragment[0])
           if classes
-            result += "<span class=\"#{classes}\">#{text}</span>"
-          else
-            result += text
+            text = "<span class=\"#{classes}\">#{text}</span>"
           end
+          result += text
+        end
+
+        if @break_style == :br_tag
+          result += "<br/>\n"
+        else
+          result += "\n"
         end
       end
       result
