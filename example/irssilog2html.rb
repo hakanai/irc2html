@@ -7,41 +7,15 @@
 
 $LOAD_PATH << '../lib'
 
+require 'erb'
 require 'ircformat/html_convertor'
 
 def convert(file)
-  puts <<END
-<html>
-  <head>
-    <title>#{file}</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <style type='text/css'>
-      body { font-family: Monaco, 'Lucida Console', monospace; }
+  title  = file
+  styles = File.read('../doc/example.css')
+  body   = IrcFormat::HtmlConvertor.new(:code_parsers => [ :mirc, :irssi ]).irc_to_html(File.read(file))
 
-END
-
-  File.open('../doc/example.css').each do |line|
-    puts line
-  end
-
-  puts <<END
-    </style>
-  </head>
-  <body class="log">
-    <div>
-END
-
-  convertor = IrcFormat::HtmlConvertor.new(:code_parsers => [ :mirc, :irssi ])
-  File.open(file) do |line|
-    puts convertor.irc_to_html(line)
-  end
-
-  puts <<END
-    </div>
-  </body>
-</html>
-END
-
+  ERB.new(File.read(File.join(File.dirname(__FILE__), 'template.erb'))).run(binding)
 end
 
 if $0 == __FILE__
