@@ -1,8 +1,7 @@
 
-$LOAD_PATH << File.dirname(__FILE__)+'/../lib'
+require 'test/unit'
 
 require 'ircformat/html_convertor'
-require 'test/unit'
 
 class TestFormatting < Test::Unit::TestCase
   def test_plain_string
