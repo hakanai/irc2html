@@ -57,6 +57,9 @@ module IrcFormat
         result += "<div style=\"#{InlineStyler.body_style}\">\n"
       end
       string.each_line do |line|
+        # For some reason IRC clients can pollute the logs with null characters...
+        line.gsub!(/\000/, '')
+
         IrcFormat::Parser.new(@code_parsers).parse_formatted_string(line.chomp).each do |fragment|
           text = self.escape_html(fragment[1])
           if options[:inline_styles]
